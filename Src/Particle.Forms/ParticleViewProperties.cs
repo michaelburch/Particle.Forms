@@ -1,9 +1,8 @@
-using System.Linq;
 using Particle.Forms.ParticleGenerators;
 using Particle.Forms.Particles;
 using SkiaSharp;
-using SkiaSharp.Views.Forms;
-using Xamarin.Forms;
+using SkiaSharp.Views.Maui;
+
 
 namespace Particle.Forms
 {
@@ -237,7 +236,7 @@ namespace Particle.Forms
             nameof(ParticleColors),
             typeof(Color[]),
             typeof(ParticleView),
-            RandomParticleGenerator.DefaultColors.Select(skColor => skColor.ToFormsColor()).ToArray(),
+            RandomParticleGenerator.DefaultColors.Select(skColor => skColor.ToMauiColor()).ToArray(),
             propertyChanged: (bindable, value, newValue) =>
             {
                 if (bindable is ParticleView me && newValue is Color[] newConfettiColors)
@@ -257,7 +256,7 @@ namespace Particle.Forms
             nameof(UseSKGLView),
             typeof(bool),
             typeof(ParticleView),
-            Device.RuntimePlatform == Device.Android
+            DevicePlatform.Android
         );
 
         /// <summary>
@@ -290,7 +289,7 @@ namespace Particle.Forms
             nameof(DebugInfoColor),
             typeof(Color),
             typeof(ParticleView),
-            Color.LawnGreen
+            System.Drawing.Color.LawnGreen
         );
 
         /// <summary>

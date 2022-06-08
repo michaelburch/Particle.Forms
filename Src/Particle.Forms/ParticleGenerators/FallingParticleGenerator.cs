@@ -1,4 +1,3 @@
-using System;
 using Particle.Forms.Particles;
 using SkiaSharp;
 

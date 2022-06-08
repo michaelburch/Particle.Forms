@@ -1,14 +1,11 @@
-using System;
-using System.Collections.Generic;
+
 using System.Diagnostics;
-using System.Linq;
-using System.Threading;
+using Particle.Forms.Particles;
 using Particle.Forms.ParticleGenerators;
 using Particle.Forms.ParticleRequester;
-using Particle.Forms.Particles;
 using SkiaSharp;
-using SkiaSharp.Views.Forms;
-using Xamarin.Forms;
+using SkiaSharp.Views.Maui;
+using SkiaSharp.Views.Maui.Controls;
 
 namespace Particle.Forms
 {
@@ -259,7 +256,7 @@ namespace Particle.Forms
                 // Compute particle update duration
                 Interlocked.Exchange(ref _updateParticlesDurationMillis, _stopwatch.ElapsedMilliseconds - _totalElapsedMillis);
 
-                Device.BeginInvokeOnMainThread(() => _invalidateSurface());
+                this.Dispatcher.Dispatch(() => _invalidateSurface());
             });
             anim.Commit(this, ParticleAnimationName, length: 1000u, rate: AnimationRateMillis, repeat: () => IsActive);
         }
